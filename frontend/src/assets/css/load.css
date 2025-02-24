@@ -1,0 +1,88 @@
+/***** Always True *****/
+@media only screen {
+    .spinner {
+        z-index: 1;
+        height: 26px;
+        display: grid;
+        border: 4px solid;
+        border-radius: 50%;
+        animation: spin 1s infinite linear;
+        border-color: transparent var(--font-color-primary);
+    }
+    
+    .spinner::before,
+    .spinner::after {
+        content: "";
+        margin: 2px;
+        grid-area: 1/1;
+        border: inherit;
+        border-radius: 50%;
+    }
+    
+    .spinner::before {
+        animation: inherit;
+        animation-duration: .5s;
+        animation-direction: reverse;
+        border-color: transparent var(--primary);
+    }
+    
+    .spinner::after {
+        margin: 8px;
+    }
+
+    @keyframes spin {
+        100% {
+            transform: rotate(1turn)
+        }
+    }
+
+    .loading-border {
+        border: 1px solid;
+        animation: load-border 1.5s infinite ease-in-out;
+
+        --border-color: var(--tertiary);
+    }
+    
+    @keyframes load-border {
+        0%, 100% {
+            border-color: transparent;
+        }
+        50% {
+            border-color: var(--border-color);
+        }
+    }
+    
+    .load-bar-container {
+        left: 50%;
+        z-index: 1;
+        position: absolute;
+        transform: translateX(-50%);
+        top: calc(65px + 4*var(--nav-top));
+    }
+
+    .load-bar { 
+        height: 5px;
+        background: var(--bg-secondary);
+    }
+    
+    .load-bar span {
+        display: block;
+        height: 100%;
+    }
+    
+    .load-bar-progress {
+        animation-fill-mode: both; 
+        background-color: var(--primary);
+        animation: progressBar 3s ease-in-out infinite;
+    }
+    
+    .load-bar-text {
+        text-align: center;
+        color: var(--font-color-primary);
+    }
+
+    @keyframes progressBar {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+}

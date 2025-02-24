@@ -1,0 +1,8 @@
+:root {
+    --nav-top: 15px;
+    --nav-left: 10px;
+    --nav-bottom: 10px;
+    --nav-width: 240px;
+    --nav-height: calc(100vh - var(--nav-top) - var(--nav-bottom));
+}  
+ 

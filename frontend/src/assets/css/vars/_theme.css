@@ -1,0 +1,73 @@
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-primary: #fff;  
+        --bg-secondary: #e1e1e1;
+
+        --font-color-primary: #3E3E3E;
+        --font-color-secondary: #2B2B2B;
+
+        --playground-bg-primary: #fffbf5;
+        --playground-bg-secondary: #e1e1e1;
+    }   
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #3E3E3E;  
+        --bg-secondary: #2B2B2B;
+
+        --font-color-primary: #fff;
+        --font-color-secondary: #e1e1e1;
+
+        --playground-bg-primary: #515151;
+        --playground-bg-secondary: #2B2B2B;
+    }   
+}
+
+:root {
+    --border-radius: 15px;
+    --btn-border-radius: 10px;
+    --btn-border-radius-sm: 5px;
+
+    --controls-width: 200px;
+    --panel-width: 200px;
+
+    --primary: rgb(215, 69, 79, 1);
+    --secondary: rgb(215, 69, 79, 0.8);
+    --tertiary: #3E3E3E;
+    --quaternary: #E1E1E1;
+
+    --error: #ef5050;
+    --success: #55dd99;
+
+    --placeholder-color: #515151;
+
+    --node-color-txt: rgb(253, 141, 125, 1);
+    --node-title-color-txt: rgb(253, 141, 125, 1);
+
+    --node-color-img: var(--node-color-txt);
+    --node-title-color-img: var(--node-title-color-txt);
+
+    --node-color-sketch: var(--node-color-txt);
+    --node-title-color-sketch: var(--node-title-color-txt);
+
+    --node-title-color-generatedImg: rgb(0, 212, 187, 1);
+    
+    --node-title-color-mesh: var(--node-title-color-generatedImg);
+
+    --node-font-color-comment: #2B2B2B;
+    --node-color-comment: rgb(255, 217, 102, 1);
+    --node-color-comment-anon: rgb(143, 146, 161, 1);
+    
+    --node-color-comment-viewer: rgb(188, 242, 253);
+    --node-color-comment-owner: rgb(255, 217, 102, 1);
+    --node-color-comment-editor: rgb(195, 253, 170);
+
+    --node-title-color-comment: var(--node-color-comment);
+
+    --node-color-default: var(--bg-secondary);
+
+    --node-font-color: var(--font-color-primary);
+
+    --box-sahdow-default: 0 0 2px 1px var(--bg-secondary);
+}

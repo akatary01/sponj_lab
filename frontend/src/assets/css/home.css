@@ -1,0 +1,62 @@
+/***** Always True *****/
+@media only screen {
+    #home-content {
+        position: absolute;
+        top: var(--nav-top);
+        left: calc(var(--nav-width) + 2*var(--nav-left) + 20px);
+        width: calc(100% - var(--nav-width) - 3 *var(--nav-left));
+    }
+
+    #home-content .crumb {
+        /* margin-top: 5px; */
+        position: absolute;
+        top: var(--nav-top);
+    }
+
+    #home-content a {
+        text-decoration: underline;
+        letter-spacing: -0.003px;
+        color: var(--font-color-secondary);
+        font-size: var(--font-size-body-medium);
+    }
+
+    #home-content h1 {
+        font-weight: 450;
+        margin: 50px 0 20px 0;
+        letter-spacing: -0.019px;
+        color: var(--font-color-primary);
+        font-size: var(--font-size-headline-large);
+    }
+
+    .icon-small {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: var(--primary);
+    }
+    
+    .promo-container {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+        width: calc(100% - 30px);
+        padding: 20px 10px 5px 10px;
+        background-color: var(--bg-primary);
+        border-radius: var(--btn-border-radius);
+    }
+
+    .promo-container p {
+        font-size: var(--font-size-body-small);
+    }
+
+    .promo-container button {
+        width: 150px;
+    }
+
+    .saving {
+        top: 0;
+        margin-top: 0;
+        position: absolute;
+    }
+}

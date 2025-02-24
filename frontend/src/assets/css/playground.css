@@ -1,0 +1,85 @@
+/***** Always True *****/
+@media only screen {
+    .playground-mode-controls {
+        left: 50%;
+        position: fixed;
+        top: calc(2*var(--nav-top));
+        transform: translateX(-50%);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--font-color-primary);
+    }
+
+    .playground-mode-controls > button {
+        margin: 0;
+        background: none;
+        padding: 7px 40px;
+        color: var(--font-color-primary);
+    }
+
+    .playground-mode-active {
+        color: var(--bg-primary) !important;   
+        background: var(--primary) !important;
+    }
+
+    .playground-mode-controls button:nth-child(1) {
+        border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+
+    .playground-mode-controls button:last-child {
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    .playground-panel { 
+        margin-top: 10px;
+        position: absolute;
+        left: var(--nav-left);
+        padding: 10px 10px 10px 15px;
+        width: calc(var(--panel-width));
+        background: var(--bg-secondary);
+        top: calc(2* var(--nav-top) + 29px);
+        border-radius: var(--btn-border-radius);
+        height: calc(100% - 2*var(--nav-top) - 29px - 10px - 20px - 15px);
+    }
+
+    .mesh-layers-container {
+        overflow-y: scroll;
+        max-height: calc(100% - 20px - 17px);
+    }
+
+    .mesh-layer-btn {
+        width: 100%;
+        margin: 2px 0;
+        min-height: 30px;
+        background: none;
+        padding: 2px 5px;
+        border-radius: 0;
+        border-radius: 5px;
+    }
+    
+    .mesh-layer-btn:hover {
+        background-color: var(--bg-primary);
+    }
+
+    .mesh-layer-selected {
+        background-color: var(--primary);
+    }
+
+    /* .mesh-title {
+        font-size: var(--font-size-body-medium);
+    } */
+
+    .playground-toolbar {
+        left: 50%;
+        padding: 0 5px;
+        position: absolute;
+        transform: translateX(-50%);
+        top: calc(3*var(--nav-top) + 28px);
+        background-color: var(--bg-primary);
+        border: 1px solid var(--bg-secondary);
+        border-radius: var(--btn-border-radius);
+    }
+
+    .playground-toolbar > .icon-button {
+        width: 39px;
+    }
+}

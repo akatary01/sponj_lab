@@ -1,0 +1,49 @@
+{   
+    "toolbar": {
+        "translate": {
+            "tooltip": "translate",
+            "icon": "fa-solid fa-up-down-left-right",
+            "disabled": false,
+            "wireframeOnly": false
+        },
+
+        "rotate": {
+            "tooltip": "rotate",
+            "icon": "fa-solid fa-rotate",
+            "disabled": false,
+            "wireframeOnly": false
+        },
+
+        "scale": {
+            "tooltip": "scale",
+            "icon": "fa-solid fa-solid fa-up-right-and-down-left-from-center",
+            "disabled": false,
+            "wireframeOnly": false
+        }
+    },
+
+    "meshControls": {
+        "stylize": {
+            "tooltip": "sponj ai stylize",
+            "icon": "fa-solid fa-wand-magic-sparkles",
+            "disabled": false,
+            "wireframeOnly": false
+        },
+
+        "segment": {
+            "tooltip": "segment",
+            "icon": "fa-solid fa-scissors",
+            "disabled": false,
+            "wireframeOnly": false
+        },
+
+        
+
+        "vertexSelector": {
+            "tooltip": "select vertices",
+            "icon": "fa-solid fa-solid fa-share-nodes",
+            "disabled": false,
+            "wireframeOnly": false
+        }
+    }
+}

@@ -1,0 +1,16 @@
+:root {
+    /* clamp(min, desired_min + (desired_max - desired_min) * (100vw - view_min) / (view_max - view_min) / (max - min), max) */
+    --font-size-nav-icon: clamp(16px, calc(20px + (36 - 20) * (100vw - 768px)/(1920 - 768)), 48px);
+
+    --font-size-title-large: 20px;  
+    --font-size-title-small: 12px;
+    --font-size-title-medium: 14px;
+
+    --font-size-headline-large: 28px;
+
+    --font-size-body-large: 15px;
+    --font-size-body-small: 11px;
+    --font-size-body-medium: 13px;
+
+    --font-size-label-small: 9px;
+}  

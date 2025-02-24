@@ -1,0 +1,14 @@
+/***** Always True *****/
+@media only screen {
+    .form-field {
+        height: 30px;
+        border: none;
+        outline: none;
+        margin: 10px 0;
+        padding: 2px 10px; 
+        border-radius: var(--btn-border-radius-sm);
+    }
+
+    .form-field.__password {
+    }
+}

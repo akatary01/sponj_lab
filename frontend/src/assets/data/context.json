@@ -1,0 +1,8 @@
+{
+    "project": [
+        { 
+            "label": "Rename", 
+            "icon": "pi pi-file-edit" 
+        }
+    ]
+}
