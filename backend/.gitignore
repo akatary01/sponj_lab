@@ -1,0 +1,13 @@
+**/__pycache__
+
+.env
+logs
+media
+logs/*
+db.sqlite3
+media/imgs/*
+**/migrations
+media/meshes/*
+data/demo.json
+sponj_lab_be_env
+media/mesh_gifs/*
