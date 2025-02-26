@@ -33,6 +33,9 @@ class CustomUserManager(BaseUserManager):
                 email = email,
                 last_name = last_name,
                 first_name = first_name,
+
+                created_at = datetime.now(),
+                updated_at = datetime.now(),
             )
     
             user.set_password(password)

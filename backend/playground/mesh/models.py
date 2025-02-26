@@ -2,16 +2,21 @@
 Mesh models
 """
 import os
+import base64
+import requests
+from io import BytesIO
+from typing import List
+from typing_extensions import override
+
 import pymeshlab
 import numpy as np 
-from typing import List
 from django.db import models
 from django.conf import settings
-from typing_extensions import override
 
 from utils.models.perm import BaseModel
 from utils import APP_URL, ALPHABET_SIZE
 from playground.schema import MeshStatus
+from playground.mesh.schema import Geometry, Style
 
 class MeshParam(BaseModel):
     params = models.JSONField(blank=True, null=True)
@@ -84,6 +89,20 @@ class Mesh(BaseModel):
         if self.gif: self.gif.delete()
         os.remove(self.path)
         super().delete()
+    
+    @staticmethod
+    def parse_data(data: Geometry | Style):
+        data_info = {
+            'strength': data.strength,
+        }
+        
+        if data.prompt:
+            data_info['prompt'] = data.prompt
+
+        elif data.img:
+            data_info['img'] = data.img.split(",")[1]
+    
+        return data_info
     
     @override
     def json(self, meta=False):

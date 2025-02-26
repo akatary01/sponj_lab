@@ -11,13 +11,9 @@ def mesh_on_complete(uid: str, task_id: str, task: TaskSchema) -> str | None:
 
     mesh.status = "ready"
     if task.type.name == "edit":
+
         if task.out.type.name == "labels":
             mesh.segment(task.out.labels)
-
-        else:
-            raise ValueError(f"Unknown output type {task.out.type}")
-
+    
     del mesh_tasks[task_id]
-
-    return mid
-
+    return mid 

@@ -12,9 +12,10 @@ from collections.abc import Callable
 from django.core.exceptions import ValidationError
 
 ALPHABET_SIZE = 26
-# APP_URL = "https://sponj3d.com"
-APP_URL = "http://localhost:8000"
-AI_API_URL = "https://sponj3d.com/ai"
+APP_URL = "http://34.127.57.13"
+# APP_URL = "http://localhost:8000"
+AI_API_URL = "http://34.58.45.241/ai"
+# AI_API_URL = "http://localhost:8002/ai"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
