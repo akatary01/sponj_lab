@@ -17,7 +17,7 @@ export const useUserStore = create<UserState>((set, get) => ({
             const user = await getUser()
             set({...user})
         } catch (error) {
-            get().signin("info@sponj3dlab.com", "SpLab3D%%2025:)")
+            get().signin("info@sponj3dlab.com", "Sponjlab123")
         }
     },
 

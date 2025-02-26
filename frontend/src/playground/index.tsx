@@ -1,6 +1,6 @@
 // custom imports
 import XCanvas from "./canvas"
-import { getPlayground } from "./api"
+import { getPlayground, initMesh } from "./api"
 import { PlaygroundPanel } from "./panel"
 import ModeControls from "./controls/mode"
 import { PlaygroundToolbar } from "./toolbar"
@@ -21,6 +21,7 @@ import { useShallow } from "zustand/shallow"
 
 // css stylesheets
 import '../assets/css/playground.css'
+import { meshType } from "./types"
 
 type PlaygroundProps = JSX.IntrinsicElements["div"] & {
 }
@@ -58,9 +59,15 @@ export default function Playground(props: PlaygroundProps) {
             init({id: plid, title: "", meshes: []})
             
             setLoading({on: true, progressText: "Initializing..."})
-            const meshes = (await getPlayground(plid)).meshes
-            meshes.forEach(mesh => addMesh(mesh))
-            // setLoading({on: false, progressText: ""})
+            const mids = (await getPlayground(plid)).meshes.map(mesh => mesh.id)
+
+            setLoading({on: true, progressText: "adding mesh..."})
+            for (const mid of mids) {
+                const mesh = await initMesh(mid)
+                addMesh(mesh)
+            }
+
+            setLoading({on: false, progressText: ""})
         }
     }
 
@@ -70,15 +77,25 @@ export default function Playground(props: PlaygroundProps) {
         initialzie()
         if (user.isAuthenticated) {
             const sock = new WebSocket(`${process.env.REACT_APP_WS_URL}/user/${user.id}`)
-            sock.onmessage = (event) => {
+            sock.onmessage = async (event) => {
                 const {type, mid, data} = JSON.parse(event.data)
+                console.log(`[onmessage] >> got message of type ${type}...`)
                 switch (type) {
                     case "meshUpdate":
                         if (find(meshes, {id: mid}, ['id'])) {
                             setLoading({on: true, progressText: "Re-initializing..."})
                             updateMesh(mid, data)
                             setLoading({on: false, progressText: ""})
+                        }  
+                        break
+                    case "playgroundUpdate":
+                        setLoading({on: true, progressText: "adding mesh..."})
+                        for (const mid of data.meshes.map((mesh: meshType) => mesh.id)) {
+                            const mesh = await initMesh(mid)
+                            addMesh(mesh)
                         }
+
+                        setLoading({on: false, progressText: ""})
                         break
                     default:
                         console.log(`[onmessage] >> got message of type ${type}`)

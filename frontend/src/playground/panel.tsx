@@ -1,8 +1,11 @@
 // custom imports
 import { meshType } from './types';
 import { selector } from './state';
+import { generateMesh } from './api';
+import { Img } from '../components/img';
+import { useUserStore } from '../user/state/store';
 import { usePlaygroundStore } from './state/store';
-import { EditableH3 } from '../components/editable';
+import { selector as userSelector } from '../user/state';
 
 // third party
 import { useMemo, useState } from 'react';
@@ -14,14 +17,44 @@ type PlaygroundPanelProps = JSX.IntrinsicElements['div'] & {
 }
 
 export function PlaygroundPanel({...props}: PlaygroundPanelProps) {
-    const { meshes } = usePlaygroundStore(useShallow(selector))
+    const { id: uid } = useUserStore(useShallow(userSelector))
+    const { id: pid, meshes, setLoading } = usePlaygroundStore(useShallow(selector))
+    const [img, setImg] = useState<File>()
 
     return (
         <div className="playground-panel">
+            <div className='flex column align-center' style={{marginTop: 10}}>
+                <Img 
+                    src={img}
+                    style={{height: 75}}
+                    placeholder="Upload image"
+                    onUpload={file => setImg(file)}
+                    imgStyle={{objectFit: "contain"}}
+                />
+                <button 
+                    className="btn btn-primary"
+                    onClick={() => {
+                        if (img) {
+                            const reader = new FileReader();
+                            
+                            reader.onload = async () => {
+                                const imgBase64 = reader.result as string
+                                setLoading({on: true, progressText: "Generating mesh..."})
+                                await generateMesh(uid, pid, [{img: imgBase64, strength: 0.7}])
+                                setImg(undefined)
+                                setLoading({on: false, progressText: undefined})
+                            }
+                            reader.readAsDataURL(img)
+                        }
+                    }}
+                >generate</button>
+            </div>
+
             <h3><b>Layers</b></h3>
             <div className='mesh-layers-container'>
                 {meshes.map(mesh => <MeshLayers key={`${mesh.id}-layers`} mesh={mesh} />)}
             </div>
+
         </div>
     )
 }

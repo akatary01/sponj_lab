@@ -1,6 +1,6 @@
 // custom imports
-import { meshType, playgroundType } from "./types"
 import { constructUrl, defaultFetchHeaders } from "../utils"
+import { meshType, playgroundType, geoType, styleType } from "./types"
 
 const playgroundUrl = `${process.env.REACT_APP_BACKEND_URL}/playground`
 
@@ -10,6 +10,15 @@ export async function getPlayground(id: string): Promise<playgroundType> {
         credentials: "include",
         headers: defaultFetchHeaders()
     })).json()
+}
+
+export async function generateMesh(uid: string, pid: string, geos: geoType[], styles: styleType[] = []): Promise<void> {
+    await fetch(constructUrl(`${playgroundUrl}/mesh/generate`, {uid, pid}), {
+        method: "POST",
+        credentials: "include",
+        headers: defaultFetchHeaders(),
+        body: JSON.stringify({geos, styles, is_sketch: false}),
+    })
 }
 
 export async function segmentMesh(uid: string, mid: string): Promise<void> {

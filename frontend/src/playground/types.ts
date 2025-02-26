@@ -43,3 +43,15 @@ export type meshTransformType = {
     position: Vector3
     quaternion: Quaternion
 }
+
+export type geoType = {
+    img?: string
+    prompt?: string
+    strength?: number
+}
+
+export type styleType = {
+    img?: string
+    prompt?: string
+    strength?: number
+}

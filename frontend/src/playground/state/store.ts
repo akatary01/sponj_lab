@@ -50,11 +50,13 @@ export const usePlaygroundStore = create<PlaygroundState>((set, get) => ({
         })
     },
 
-    addMesh: async (data) => {
+    addMesh: async (mesh) => {
         const state = get()
-        state.setLoading({on: true, progressText: "adding mesh..."})
-        const mesh = await initMesh(data.id)
-   
+        if (find(state.meshes, {id: mesh.id}, ['id'])) {
+            return
+        }
+        
+        console.log(`[addMesh] >> adding ${mesh.id}...`)
         set({
             meshes: [
                 ...state.meshes, 
@@ -67,7 +69,6 @@ export const usePlaygroundStore = create<PlaygroundState>((set, get) => ({
                 } as meshType
             ]
         })
-        state.setLoading({on: false, progressText: undefined})
     },
 
     deleteMesh: (id) => {
